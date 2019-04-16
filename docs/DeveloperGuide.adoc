@@ -1,7 +1,6 @@
 = TravelBuddy - Developer Guide
 :site-section: DeveloperGuide
 :toc:
-:toc-title:
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images
@@ -133,13 +132,9 @@ The following class plays an important role at the architecture level:
 
 * `LogsCenter` : Used by many classes to write log messages to TravelBuddy's log file.
 
-The rest of TravelBuddy consists of four components.
-
-
-
+The rest of TravelBuddy consists of four components:
 
 * <<Design-Ui,*`UI`*>>: The User Interface (UI) of the App.
-
 * <<Design-Logic,*`Logic`*>>: The command executor.
 * <<Design-Model,*`Model`*>>: Holds the data of TravelBuddy in-memory.
 * <<Design-Storage,*`Storage`*>>: Reads data from, and writes data to, the hard disk.
@@ -170,9 +165,10 @@ image::SDforDeletePlace.png[width="800"]
 
 The sections below give more details of each component.
 
+[[Design-Ui]]
+
 // tag::uiArchitecture[]
 
-[[Design-Ui]]
 === UI Component
 
 *API* :
@@ -182,7 +178,7 @@ link:{repoURL}/tree/master/src/main/java/seedu/travel/ui/Ui.java[`Ui.java`]
 [reftext="Figure 3.2.1"]
 [caption="Figure 3.2.1: "]
 .Structure of the UI component
-image::UiClassDiagram.png[width="800"]
+image::UiClassDiagram.png[width="400"]
 
 The `UI` component, as seen in <<UiClassDiagram>>, uses the JavaFX UI framework. The *layout* of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/travel/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
@@ -213,7 +209,6 @@ All parts inherit from the abstract `UiPart` class.
 
 ** `PlaceListCard`: Labels for the Display index and Place data fields (`CountryCode`, `Rating` etc.) in a VBox the left,
 Labels that display Name and actual Place data (`CountryCode`, `Rating` etc) in a VBox on the right
-
 
 * RightParentPanel: Parent panel for both `ChartListPanel` and `ExpandedPlacePanel`,
 contains helper methods for switching functionality, interacts with `Model` and `Logic`
@@ -709,7 +704,7 @@ entered.
 [reftext="Figure 4.3.1.1"]
 [caption="Figure 4.3.1.1: "]
 .Execution sequence of the `add` command
-image::AddCommandSequenceDiagram.PNG[width="800"]
+image::AddCommandSequenceDiagram1.png[width="800"]
 
 `add n/NUS Computing cc/SGP dv/10/10/2017 r/3 d/My School a/13 Computing Drive,
 117417 t/faculty`
@@ -885,7 +880,7 @@ If the filepath is invalid or the file cannot be opened, then `ImageIO.read()` t
 The exception is caught, control returns to `parsePhoto()` and a `ParseException is thrown`.
 
 [source, java]
-`    public static boolean isValidPhotoFilepath(String test) {
+    public static boolean isValidPhotoFilepath(String test) {
         if (!(test instanceof String)) {
             throw new NullPointerException();
         }
@@ -901,7 +896,7 @@ The exception is caught, control returns to `parsePhoto()` and a `ParseException
             return false;
         }
         return true;
-    }`
+    }
 
 * Else, control returns to `parseUtil.parsePhoto()`. It uses the all-parameter `Place()` constructor to create
 a `Place` object, using the `Photo` parameter and other parameters.
@@ -917,19 +912,19 @@ JavaFX `Image` object, which is then displayed in a `ImageView` panel at the top
 [reftext="Figure 4.4.1.1"]
 [caption="Figure 4.4.1.1: "]
 .Activity diagram for photo feature
-image::AddPhotoActivityDiagram.PNG[width="800"]
+image::AddPhotoActivityDiagram1.png[width="600"]
 
 ===== Example: Using `add` to include a photo
 
 Given below is an example usage scenario and what the user will see in the GUI.
 
-Step 1.Input `add n/Himeiji Castle cc/JPN dv/15/12/2017 r/5 d/Wow. a/Kyoto t/castle p/C:\Users\Michael\Pictures\castle-photo.jpg`
+Step 1. Input `add n/Himeiji Castle cc/JPN dv/15/12/2017 r/5 d/Wow. a/Kyoto t/castle p/C:\Users\Michael\Pictures\castle-photo.jpg`
 
 [[addPhotoBefore]]
 [reftext="Figure 4.4.1.2"]
 [caption="Figure 4.4.1.2: "]
 .Before the `add` command is executed
-image::addPhotoBefore.png[width="800"]
+image::addPhotoBefore2.png[width="400"]
 
 Step 2. The user inputs `selects 4`.
 
@@ -937,7 +932,7 @@ Step 2. The user inputs `selects 4`.
 [reftext="Figure 4.4.1.3"]
 [caption="Figure 4.4.1.3: "]
 .After the `add` command is executed and the newly added Place "Himeiji Castle" is selected
-image::addPhotoAfter.png[width="800"]
+image::addPhotoAfter2.png[width="400"]
 
 ==== Design Considerations
 
@@ -1030,11 +1025,11 @@ For this section on Charts, the focus is on the <<class-diagram, class diagram>>
 .OOP Diagram
 image::Chart_ModelClassBetterOopDiagram.png[width="590", caption="Figure 4.5.1.1: ", reftext="Figure 4.5.1.1"]
 
-*Logic & Model Interaction:* Having discussed Logic and Model, we can now model the workflow of the `generate` command. This can be accomplished using an <<activity-diagram, activity diagram>>, as seen in <<GenerateCommandActivityDiagram>>.
-
 [[GenerateCommandActivityDiagram]]
 .Activity Diagram for the `generate` command
-image::GenerateCommandActivityDiagram.png[width="370", caption="Figure 4.5.1.2: ", reftext="Figure 4.5.1.2"]
+image::GenerateCommandActivityDiagram.png[width="380", caption="Figure 4.5.1.2: ", reftext="Figure 4.5.1.2"]
+
+*Logic & Model Interaction:* Having discussed Logic and Model, we can now model the workflow of the `generate` command. This can be accomplished using an <<activity-diagram, activity diagram>>, as seen in <<GenerateCommandActivityDiagram>>.
 
 Additionally, we want to be able to capture the interaction between multiple objects for the `generate` command. This can be accomplished using a <<sequence-diagram, sequence diagram>>, as seen in <<GenerateCommandSeqDiagramFigure>> below. The step-by-step explanation of the sequence diagram is as follows:
 
@@ -1046,8 +1041,6 @@ Additionally, we want to be able to capture the interaction between multiple obj
 . The `ChartBook#commitChart()` method is invoked by `TravelBuddy`.
 . The `CommandResult` object is returned.
 
-
-
 [[GenerateCommandSeqDiagramFigure]]
 .Sequence Diagram for the `generate` command
 image::GenerateCommandSeqDiagram.png[width="700", caption="Figure 4.5.1.3: ", reftext="Figure 4.5.1.3"]
@@ -1058,7 +1051,15 @@ image::GenerateCommandSeqDiagram.png[width="700", caption="Figure 4.5.1.3: ", re
 * `saveRatingChart(filePath)` - Saves the ratings data into a JSON file.
 * `saveYearChart(filePath)` - Saves the years data into a JSON file.
 
-As an example, a code snippet for `saveCountryChart(filePath)` is shown below.
+As an example, a code snippet for `saveCountryChart(filePath)` is shown below. In it, a third-party library called Gson was used to convert Java Objects into JSON and back. The Gson API can be found https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5[here]. A step-by-step explanation is as follows:
+
+. `saveCountryChart` accepts a `ReadOnlyCountryChart` object, which supplies data for the Country Chart, and a `Path` object, which specifies the file path for the `FileWriter` to write into.
+. Both objects are checked by `requireAllNonNull` to make sure they are not empty.
+. A `Gson` object is instantiated using the `GsonBuilder#setPrettyPrinting()#create()` object.
+. A `FileWriter` object is instantiated with the `Path` object as its parameter.
+. Assuming there are no exceptions, `Gson#toJson()` object will serialize the `ReadOnlyCountryChart` data as a `JsonObject` and place the stream on `FileWriter`.
+. The `FileWriter#flush()` will flush the stream.
+. If an `IOException` occurs, a warning message will be displayed by the `Logger#warning` object.
 
 [source,java]
 ----
@@ -1074,16 +1075,6 @@ public void saveCountryChart(ReadOnlyCountryChart countryChart, Path filePath) {
     }
 }
 ----
-
-In the snippet, a third-party library called Gson was used to convert Java Objects into JSON and back. The Gson API can be found https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5[here]. A step-by-step explanation is as follows:
-
-. `saveCountryChart` accepts a `ReadOnlyCountryChart` object, which supplies data for the Country Chart, and a `Path` object, which specifies the file path for the `FileWriter` to write into.
-. Both objects are checked by `requireAllNonNull` to make sure they are not empty.
-. A `Gson` object is instantiated using the `GsonBuilder#setPrettyPrinting()#create()` object.
-. A `FileWriter` object is instantiated with the `Path` object as its parameter.
-. Assuming there are no exceptions, `Gson#toJson()` object will serialize the `ReadOnlyCountryChart` data as a `JsonObject` and place the stream on `FileWriter`.
-. The `FileWriter#flush()` will flush the stream.
-. If an `IOException` occurs, a warning message will be displayed by the `Logger#warning` object.
 
 ==== Generate Command
 
@@ -1689,4 +1680,4 @@ These instructions only provide a starting point for testers to work on. Testers
 .. Test case: `delete 0` +
    Expected: No place is deleted. Error details shown in the status message. Status bar remains the same.
 .. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size)  +
-   Expected: Similar to previous.
+  Expected: Similar to previous.

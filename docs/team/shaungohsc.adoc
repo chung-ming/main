@@ -21,39 +21,40 @@ endif::[]
 :doctype: article
 :reproducible:
 
-= *PROJECT: TravelBuddy*
+= PROJECT: TravelBuddy
 
 ---
 
-== *Overview*
+== Overview
 
-This document serves to highlight my contributions to *TravelBuddy*, a travel journalling application. TravelBuddy gives travelers
-simple tools to pen down their trip details, i.e. the places that they have visited, the address/location etc. As every journal entry
-in *TravelBuddy* is a *Place*, travelers can also include a photo, rate the place out of 5 stars, tag the Place with custom tags,
+This document serves to highlight my contributions to *TravelBuddy*, a travel journaling application. +
+
+TravelBuddy gives travelers simple tools to pen down their trip details. As every journal entry
+in *TravelBuddy* is a Place, travelers can also include a photo, rate the place out of 5 stars, tag the Place with custom tags,
 and pen down other personal information about the place, breathing life into an otherwise lifeless application.
 
-TravelBuddy also gives travelers the means to make sense of their data, via simple data visualisation. Together with robust and intuitive search
-functionality, TravelBuddy not only serves as a digital journal, but also gives travelers fresh insights about their adventures.
-A traveller can then utilise the knowledge and experience gleaned from previous trips in planning for future trips.
+TravelBuddy also gives travelers the means to make sense of their data, via simple data visualization. Together with intuitive search
+functionality, TravelBuddy also gives travelers new insights about their adventures.
 
-*TravelBuddy* was built as part of the CS2103 Software Engineering module in NUS, in which link:https://cs2103-ay1819s2-w11-3.github.io/main/AboutUs.html[my team and I] were tasked to
-morph an existing link:https://se-education.org/addressbook-level4/[Address Book] software product, and turn it into a new product -- *TravelBuddy*. The full source code for *TravelBuddy* is available :{repoURL}[here].
+*TravelBuddy* was built as part of the CS2103 Software Engineering module in the National University of Singapore, in which link:https://cs2103-ay1819s2-w11-3.github.io/main/AboutUs.html[my team and I] were tasked to
+morph an existing link:https://se-education.org/addressbook-level4/[Address Book] software product, and turn it into a new product -- *TravelBuddy*. The full source code for *TravelBuddy* is available link:https://github.com/CS2103-AY1819S2-W11-3/main[here].
 
-== *Summary of Contributions*
+== Summary of Contributions
 
-* *Major Enhancement*: Photo Functionality
-* *Minor enhancement*: Added the ability to change from ExpandedPlace view to Chart view using the `generate` command
+This section gives an overview of my contributions to the development and testing
+of the software. A more detailed sample of my contributions to the User Guide and Developer Guide
+can be found below in <<User Guide Contributions>> and <<Developer Guide Contributions>> .
 
-== *Major Enhancement*: Photo Functionality
+=== Major Enhancement: Photo Functionality
 Photo functionality refers to the ability to include an image file with a user-defined Place. This functionality includes the ability to:
 
 * *Add a photo* to a Place +
 When using the `add` command to add a Place, users can specify the absolute file path of their desired photo with a `p/` prefix.
-The photo will then be displayed at the top of the ExpandedPlace view.
+The photo will then be displayed at the top of the expanded Place view.
 
 * *Replace the existing photo* of a Place +
 Using the `edit` command, users can specify the file path of a new photo with the `p/` prefix.
-The existing photo will then be replaced with the new photo at the top of the ExpandedPlace view.
+The existing photo will then be replaced with the new photo at the top of the expanded Place view.
 
 *Justification:* Photographs spark memories and invoke feelings; they are an indispensable part of any travel journal. +
 
@@ -62,94 +63,74 @@ mean much on its own, but when paired with the mouth-watering photo of a juicy l
 
 *Highlights:* The nature of this enhancement requires updates in and integration with multiple components, more below:
 
-* *Logic:* Photos are attached to Places via the `add` command and replaced via the `edit` method. +
-Hence, changes to addParser and ParserUtil were also needed to take into account the `p/` prefix.
-s
-* *Model:* Extensive changes to the Model was needed to include the Photo filepath string.
+* `Logic` - Photos are attached to Places via the `add` command and replaced via the `edit` method. +
+Hence, changes to `addParser` and `ParserUtil` were also needed to take into account the `p/` prefix.
 
-* *Storage:* The filepath string must be stored in a new field within `TravelBuddy.json`.
+* `Model` - Extensive changes to the `Model` was needed to include the Photo `filepath` string.
 
-* *User Interface (UI):* If an included photo is present, it must be displayed in the ExpandedPlace view, otherwise, no image is displayed.
+* `Storage` - The `filepath` string must be stored in a new field within `TravelBuddy.json`.
 
-*Credits:* Not Applicable.
+* `UI` (User Interface) - If an included photo is present, it must be displayed in the expanded Place view. Otherwise, no image is displayed.
 
-*Code contributed to major enhancement*: [link:https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=shaun&sort=displayName&since=2019-02-10&until=2019-04-10&timeframe=day&reverse=false&repoSort=true[RepoSense]] [link:{repoURL}/pulls?utf8=✓&q=is%3Apr+author%3Ashaungohsc+label%3Atype.Enhancement+[Functional code]]
+*Code contributed to major enhancement*: [link:https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=shaun&sort=displayName&since=2019-02-10&timeframe=day&reverse=false&repoSort=true[RepoSense]] [link:{repoURL}/pulls?utf8=✓&q=is%3Apr+author%3Ashaungohsc+label%3Atype.Enhancement+[Functional code]]
 
-== *Minor Enhancement*: View Switching between Place view and Chart view
+=== Minor Enhancement: View Switching between Place view and Chart view
 
-On calling the `generate` command, the Chart view is displayed to the user. On calling the `select` command, the Expanded Place view is displayed to the user.
+On calling the `generate` command, the Chart view is displayed to the user. On calling the `select` command, the expanded Place view is displayed to the user.
 
-*Justification:* Splitting the usable UI space into half, one for Chart and another for an Expanded Place details, reduces the screen real estate for both. +
+*Justification:* Splitting the usable User Interface (UI) space into half, one for Chart and another for an Expanded Place details, reduces the screen real estate for both. +
 
-The use of `generate` and `select` commands to change views provides full real estate for both features. Chart view can subsequently accomodate more charts,
-while Expanded Place view can display more information without compromising on a pleasant User Experience.
-
+The use of `generate` and `select` commands to change views provides full real estate for both features. Chart view can subsequently accommodate more charts,
+while Expanded Place view can display more information while providing a pleasant User Experience.
 
 *Highlights:* A robust event-handling system like above requires updates to multiple components involved in the Model-View-Controller pattern:
 
-* *Model:* A Observable property is needed to reflect the view state.
+* `Model` - An `Observable` property is needed to reflect the view state.
 
-* *Logic:* The helper methods of the Observable property need implementation.
+* `Logic` - The helper methods of the `Observable` property require implementation.
 
-* *User Interface (UI):* A parent panel is needed to house both the Chart view panel and the Expanded Place view panel.
+* `UI` (User Interface) - A parent panel is needed to house both the Chart view panel and the Expanded Place view panel.
 It also needs to be responsible for view switching.
-
-*Credits:* Not Applicable
 
 *Code Contributed*: [link:https://github.com/CS2103-AY1819S2-W11-3/main/pulls?utf8=%E2%9C%93&q=is%3Apr+author%3Ashaungohsc+label%3Atype.MinorEnhancement+label%3Apriority.High[Functional code]]
 
-== Other Contributions:
+=== Other Contributions:
+
+This section gives a sample overview of other miscellaneous contributions to TravelBuddy.
 
 * *Project management*:
-** Managed releases `v1.4.2` (1 release) on GitHub
+** Managed release `v1.4` (1 release) on https://github.com/CS2103-AY1819S2-W11-3/main/releases/tag/v1.4[GitHub]
 * *Enhancements to existing features*:
-** Update PlaceCard for new data fields (Pull requests https://github.com/CS2103-AY1819S2-W11-3/main/pull/71[#71], https://github.com/CS2103-AY1819S2-W11-3/main/pull/107[#107])
-** Updated the UI CSS so all UI components are inline with the colour palette (Pull request https://github.com/CS2103-AY1819S2-W11-3/main/pull/186[#186])
+** Updated `PlaceCard` for new data fields (Pull requests https://github.com/CS2103-AY1819S2-W11-3/main/pull/71[#71], https://github.com/CS2103-AY1819S2-W11-3/main/pull/107[#107])
+** Updated the UI CSS so all UI components are inline with the color palette (Pull request https://github.com/CS2103-AY1819S2-W11-3/main/pull/186[#186])
 * *Testing and Bug-fixing*
 ** Wrote additional tests for existing features to increase coverage from 89% to 92% (Pull request https://github.com/CS2103-AY1819S2-W11-3/main/pull/189[#189])
-** Fixed UI bugs in PlaceListCard and PlaceListPanel (Pull request https://github.com/CS2103-AY1819S2-W11-3/main/pull/107[#107])
+** Fixed UI bugs in `PlaceListCard` and `PlaceListPanel` (Pull request https://github.com/CS2103-AY1819S2-W11-3/main/pull/107[#107])
 * *Documentation*:
-** Help rewrite the intro of the User Guide: https://github.com/CS2103-AY1819S2-W11-3/main/pull/178/commits/44c3b11e3a882874c1ca3631162e6003746a75aa[#178]
+** Help rewrite the introduction of the User Guide: https://github.com/CS2103-AY1819S2-W11-3/main/pull/178/commits/44c3b11e3a882874c1ca3631162e6003746a75aa[#178]
 * *Community*:
-** PRs reviewed (with non-trivial review comments): https://github.com/CS2103-AY1819S2-W11-3/main/pull/190[#190], https://github.com/CS2103-AY1819S2-W11-3/main/pull/187[#187]
+** Pull Requests (PR) reviewed (with non-trivial review comments): https://github.com/CS2103-AY1819S2-W11-3/main/pull/190[#190], https://github.com/CS2103-AY1819S2-W11-3/main/pull/187[#187]
 ** Reported bugs on TravelBuddy (examples:  https://github.com/CS2103-AY1819S2-W11-3/main/issues/66[#66], https://github.com/CS2103-AY1819S2-W11-3/main/issues/172[172])
-** Reported bugs and gave suggestions for other teams (Examples:
-https://github.com/CS2103-AY1819S2-W16-1/main/issues/161[Report 1],
-https://github.com/CS2103-AY1819S2-W16-1/main/issues/181[Report 2],
-https://github.com/CS2103-AY1819S2-W16-1/main/issues/171[Report 3],
+** Reported bugs and gave suggestions for other teams' project (Examples:
+https://github.com/CS2103-AY1819S2-W16-1/main/issues/161[Report 1], https://github.com/CS2103-AY1819S2-W16-1/main/issues/181[Report 2], https://github.com/CS2103-AY1819S2-W16-1/main/issues/171[Report 3],
 https://github.com/CS2103-AY1819S2-W16-1/main/issues/144[Report 4]
-* Tools:
 
-== *User Guide* Contributions
-
+== User Guide Contributions
 
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+| Given below are my contributions to the User Guide. They demonstrate my ability to write documentation targeting end-users.
 |===
-
-=== Introduction
-
-include::../UserGuide.adoc[tag=intro]
-
-=== Add a Photo Using `p/` Prefix
 
 include::../UserGuide.adoc[tag=addphoto]
 
-=== Replace the Photo Using `p/` Prefix
+=== Replacing the photo of a place with `edit p/`
 
-include::../UserGuide.adoc[tag=editphoto]
-
-
-== *Developer Guide* Contributions
+== Developer Guide Contributions
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+| Given below are my contributions to the Developer Guide. They demonstrate my ability to write technical documentation targeting software developers.
 |===
-
-=== UI Architecture
 
 include::../DeveloperGuide.adoc[tag=uiArchitecture]
-
-=== Photos Features
 
 include::../DeveloperGuide.adoc[tag=photosFeature]

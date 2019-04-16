@@ -145,6 +145,9 @@ public class ParserUtil {
         requireNonNull(filepath);
         String trimmedFilepath = filepath.trim();
 
+        if (trimmedFilepath.equals("")) {
+            throw new ParseException(Photo.MESSAGE_CONSTRAINTS);
+        }
 
         if (trimmedFilepath.substring(0, 1).equals("\"")) {
             trimmedFilepath = trimmedFilepath.substring(1, filepath.length() - 1);

@@ -32,6 +32,8 @@ My role was to design the chart feature. The following sections describe the enh
 
 == Summary of Contributions
 
+This section summarizes my contribution to this project.
+
 === Major Enhancement
 The major enhancement I did was adding the ability to generate charts in real-time or via the `generate` command, the details of which are stated below:
 
@@ -107,8 +109,9 @@ a|* Integrated a third-party library (Gson) to the project +
 
 |=======================================================================
 
-<<<
 == Contributions to the User Guide
+
+The original User Guide was updated to match the enhancements implemented in this project.
 
 ****
 _Given below is the start of the excerpt of sections I contributed to the link:{websiteURL}/UserGuide.html[User Guide]. They showcase my ability to write documentation targeting end-users._
@@ -125,6 +128,8 @@ _This is the end of the excerpt of the link:{websiteURL}/UserGuide.html[User Gui
 ****
 
 == Contributions to the Developer Guide
+
+The original Developer Guide was updated to match the enhancements implemented in this project.
 
 ****
 _Given below is the start of the excerpt of sections I contributed to the link:{websiteURL}/DeveloperGuide.html[Developer Guide]. They showcase my ability to write documentation targeting end-users._

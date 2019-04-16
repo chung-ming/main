@@ -50,6 +50,8 @@ documentation of these enhancements in the user and developer guide.
 
 == Summary of Contributions
 
+This section summarises my contributions to the project.
+
 === Major Enhancement
 The major enhancement I added was, *the ability to add, list, edit and delete places in TravelBuddy*.
 

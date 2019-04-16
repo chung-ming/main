@@ -75,8 +75,8 @@ few seconds, as shown in <<ui>>.
 +
 .An illustration of how the TravelBuddy GUI looks
 [[ui]]
-[reftext="Figure 3.1.1"]
-[caption="Figure 3.1.1: "]
+[reftext="Figure 3.1"]
+[caption="Figure 3.1: "]
 image::Ui.png[width="400"]
 +
 .  Perform a quick test to verify that TravelBuddy works by typing in a command in the command box and press kbd:[Enter] to execute it.
@@ -102,7 +102,7 @@ Below are other example commands you may try:
 +
 . For a detailed explanation of each command, refer to <<Features>>.
 +
-. For a complete summary of each command, refer to <<Cheatsheet>>
+. For a complete summary of each command, refer to <<Cheatsheet>>.
 
 // tag::features[]
 [[Features]]
@@ -205,6 +205,7 @@ A place can have any number of tags (including 0 tags).
 // end::crudAdd[]
 
 // tag::addphoto[]
+
 [[attachPhotoFeature]]
 ==== Including a photo when adding a place with `p/`
 
@@ -241,19 +242,19 @@ the filepath `C:\Users\Michael\Pictures\castle-photo.jpg`.
 <<addPhotoBefore>> below shows TravelBuddy before the above example command is executed.
 
 [[addPhotoBefore]]
-[reftext="Figure 4.3.2.1"]
-[caption="Figure 4.3.2.1: "]
+[reftext="Figure 4.3.1.1"]
+[caption="Figure 4.3.1.1: "]
 .Before the `add` command is executed.
-image::addPhotoBefore.png[width="600"]
+image::addPhotoBefore2.png[width="400"]
 
 <<addPhotoAfter>> below shows TravelBuddy after the above example command is executed, and
 the newly added "Himeiji Castle" is selected.
 
 [[addPhotoAfter]]
-[reftext="Figure 4.3.2.2"]
-[caption="Figure 4.3.2.2: "]
+[reftext="Figure 4.3.1.2"]
+[caption="Figure 4.3.1.2: "]
 .After the `add` command is executed and the newly added "Himeiji Castle" is selected.
-image::addPhotoAfter.png[width="600"]
+image::addPhotoAfter2.png[width="400"]
 
 ****
 
@@ -267,15 +268,15 @@ photo you would like to include:
 
 - *Step 3:* Select the Photo you would like to add.
 
-[reftext="Figure 4.3.3"]
-[caption="Figure 4.3.3: "]
+[reftext="Figure 4.3.1.3"]
+[caption="Figure 4.3.1.3: "]
 .Select the Photo you would like to add
 image::AddPhotoStep3.png[width="400"]
 
 - *Step 4:* Click on `Copy Path` at the top left corner of the File Explorer window.
 
-[reftext="Figure 4.3.4"]
-[caption="Figure 4.3.4: "]
+[reftext="Figure 4.3.1.4"]
+[caption="Figure 4.3.1.4: "]
 .Click on `Copy Path` at the top left corner File Explorer window
 image::AddPhotoStep4.png[width="400"]
 
@@ -334,7 +335,6 @@ Edits the rating and description of the 1st entry in the list to be `3` and `No 
 Edits the name of the 2nd entry in the list to be `Raffles Hotel` and clears all existing tags.
 
 <<editFigureBefore>> below shows the list of places before the `edit` command is used.
-// TODO: update screenshot.
 [[editFigureBefore]]
 [reftext="Figure 4.5.1"]
 [caption="Figure 4.5.1: "]
@@ -351,7 +351,7 @@ image::editCommandAfter.png[width="400"]
 
 // end::crudEdit[]
 
-// tag::editPhoto[]
+// tag::editphoto[]
 
 ==== Replacing the photo of a place with `edit p/`
 
@@ -361,18 +361,18 @@ the `FILE_PATH` of the current photo with the `FILE_PATH` of the new photo.
 <<replacePhotoBefore>> below shows TravelBuddy before `edit` command is used to replace the current photo.
 
 [[replacePhotoBefore]]
-[reftext="Figure 4.5.3"]
-[caption="Figure 4.5.3: "]
+[reftext="Figure 4.5.1.1"]
+[caption="Figure 4.5.1.1: "]
 .Before the `edit` command is used to replace a photo.
-image::editPhotoBefore.png[width="400"]
+image::editPhotoBefore2.png[width="400"]
 
-<<replacePhotoAfter>> below shows TravelBuddy after a new photo has been added to the place "Nanyang Technological University".
+<<replacePhotoAfter>> below shows TravelBuddy after a new photo has been added to the place "Suntory Yamazaki Distillery".
 
 [[replacePhotoAfter]]
-[reftext="Figure 4.5.4"]
-[caption="Figure 4.5.4: "]
+[reftext="Figure 4.5.1.2"]
+[caption="Figure 4.5.1.2: "]
 .After the `edit` command is used to replace a photo.
-image::editPhotoAfter.png[width="400"]
+image::editPhotoAfter2.png[width="400"]
 
 ****
 *Examples:* Given below is an example of using `edit` to replace a photo:
@@ -385,7 +385,7 @@ Replaces the current photo of 3rd Place entry with the photo named `Zion Nationa
 The image FILE_PATH being replaced with the `edit` command must still follow the
 specifications laid out in <<Including a photo when adding a place with `p/`>>
 
-// end::editPhoto[]
+// end::editphoto[]
 
 // tag::search[]
 [[searchFeature]]
@@ -594,7 +594,7 @@ Deletes the 1st place in the results of the `search` command.
 [reftext="Figure 4.12.1"]
 [caption="Figure 4.12.1: "]
 .An example of the `deletem` command
-image::deletemExample.png[width="400"]
+image::deletemExample1.png[width="400"]
 
 *Examples:* Given below are some examples on how to utilize the `deletem` command:
 
@@ -663,7 +663,7 @@ image::historyCommand.png[width="400"]
 
 [NOTE]
 ====
-Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
+Pressing the up and down arrows will display the previous and next input respectively in the command box.
 ====
 // end::history[]
 
@@ -738,15 +738,15 @@ Reapplies the `clear` command. +
 [[generateFeature]]
 === Generating Charts: `generate`
 
+[[Chart_Combined]]
+.The number of places visited by country, rating category and year
+image::Chart_Combined.png[width="800", caption="Figure 4.17.1: ", reftext="Figure 4.17.1"]
+
 *Description:* The `generate` command generates charts based on the list of places in TravelBuddy. TravelBuddy serves up three charts (<<Chart_Combined>>) that are the most relevant to you as a traveler:
 
 * The number of places visited for each country
 * The number of places visited for each rating category
 * The number of places visited for each year
-
-[[Chart_Combined]]
-.The number of places visited by country, rating category and year
-image::Chart_Combined.png[width="800", caption="Figure 4.17.1: ", reftext="Figure 4.17.1"]
 
 *Shortcut:* `g`
 
@@ -771,23 +771,25 @@ image::Generate_BeforeParamAfterParam.png[width="800", caption="Figure 4.17.2: "
 Selects the 1st place in the current list displayed. +
 `generate` +
 Generates the charts.  +
-*_Outcome:_* The charts were successfully generated, as seen in <<Generate_Successful>> +
-[[Generate_Successful]]
-[reftext="Figure 4.17.3"]
-[caption="Figure 4.17.3: "]
-.The charts were successfully generated
-image::Generate_Successful.png[width="400"]
+*_Outcome:_* The charts were successfully generated, as seen in <<Generate_Successful>>
 
 * `clear` +
 Clears all places in the list. +
 `generate` +
 Generates the charts.  +
-*_Outcome:_* Unable to generate the charts as the list is empty, as seen in <<Generate_ListIsEmpty>> +
+*_Outcome:_* Unable to generate the charts as the list is empty, as seen in <<Generate_ListIsEmpty>>
+
+[[Generate_Successful]]
+[reftext="Figure 4.17.3"]
+[caption="Figure 4.17.3: "]
+.The charts were successfully generated
+image::Generate_Successful.png[width="380"]
+
 [[Generate_ListIsEmpty]]
 [reftext="Figure 4.17.4"]
 [caption="Figure 4.17.4: "]
 .Unable to generate the charts as the list is empty
-image::Generate_ListIsEmpty.png[width="400"]
+image::Generate_ListIsEmpty.png[width="380"]
 
 // end::generate[]
 
@@ -885,10 +887,10 @@ the file can be opened by a text editor such as NotePad.
 * Filepath of the photo file for the place (Prefix: `p/`)
 
 *Q*: *Why does the `undo` command not work?* +
-*A*: The `undo` command only reverses the commands `add`, `delete`, `deletem`, `edit` and `clear`.
+*A*: The `undo` command only reverses the commands `add`, `delete`, `deletem`, `generate`, `edit` and `clear`.
 
 *Q*: *Why does the `undo` command reverse a command from multiple commands before?* +
-*A*: The `undo` command reverses the last used `add`, `delete`, `deletem`, `edit` or `clear` command.
+*A*: The `undo` command reverses the last used `add`, `delete`, `deletem`, `edit`, `generate` and `clear` command.
 
 // tag::cheatsheet[]
 == Cheatsheet
